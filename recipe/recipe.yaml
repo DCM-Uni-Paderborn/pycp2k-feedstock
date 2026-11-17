@@ -13,7 +13,7 @@ source:
   sha256: 8b1ebcdcc9326463fe90102a133142d1e5ae94d154689f6df9674851b0152fce
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
@@ -21,13 +21,10 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - setuptools
+    - setuptools >=77
   run:
     - python >=${{ python_min }}
-    - pip
-    - future
-    - ase
-    - numpy
+    - numpy >=1.23
 
 tests:
   - python:
@@ -39,15 +36,15 @@ tests:
         - "*"
 
 about:
-  license: LGPL-3.0-only
+  license: GPL-2.0-or-later
   license_file: LICENSE
-  summary: Python Cp2k interface
+  summary: Direct, in-process Python interface to libcp2k
   description: |
-    PYCP2K is a python package providing a dynamic object-oriented
-    interface to CP2K, an atomistic and molecular simulation software.
-  homepage: https://github.com/SINGROUP/pycp2k
-  repository: https://github.com/SINGROUP/pycp2k
-  documentation: https://github.com/SINGROUP/pycp2k
+    pycp2k calls the C API of libcp2k in the Python process using ctypes.
+    The shared CP2K library and its numerical dependencies are installed separately.
+  homepage: https://www.cp2k.org
+  repository: https://github.com/cp2k/cp2k
+  documentation: https://github.com/cp2k/cp2k/blob/master/python/README.md
 
 extra:
   recipe-maintainers:
